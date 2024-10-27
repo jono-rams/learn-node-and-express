@@ -1,0 +1,23 @@
+{
+  "name": "learn-node-and-express",
+  "version": "1.0.0",
+  "description": "Repository to document my journey learning node and express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jono-rams/learn-node-and-express.git"
+  },
+  "author": "Jonathan Rampersad",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/jono-rams/learn-node-and-express/issues"
+  },
+  "homepage": "https://github.com/jono-rams/learn-node-and-express#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
