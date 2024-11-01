@@ -1,8 +1,16 @@
 const express = require('express');
 const morgan = require('morgan');
+require('dotenv').config();
+
+// get environment variables
+const db_username = process.env.DB_USERNAME;
+const db_password = process.env.DB_PASSWORD;
 
 // express app
 const app = express();
+
+// connect to mongodb
+const dbURI = `mongodb+srv://${db_username}:${db_password}@nodetut.upy0n.mongodb.net/?retryWrites=true&w=majority&appName=NodeTut`;
 
 // register view engine
 app.set('view engine', 'ejs');
