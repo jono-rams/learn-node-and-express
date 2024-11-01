@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongodb = require('mongoose');
+const Blog = require('./models/blog');
 require('dotenv').config();
 
 // get environment variables
@@ -22,6 +23,19 @@ app.set('view engine', 'ejs');
 // middleware & static files
 app.use(express.static('public'));
 app.use(morgan('dev'));
+
+// mongoose and mongo sandbox routes
+app.get('/add-blog', (req, res) => {
+  const blog = new Blog({
+    title: 'New Blog',
+    snippet: 'about my new blog',
+    body: 'more about my new blog'
+  });
+
+  blog.save()
+    .then((result) => res.send(result))
+    .catch((err) => console.error(err));
+});
 
 app.get('/', (req, res) => {
   const blogs = [
