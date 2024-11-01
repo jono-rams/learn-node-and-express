@@ -27,7 +27,7 @@ app.use(morgan('dev'));
 // mongoose and mongo sandbox routes
 app.get('/add-blog', (req, res) => {
   const blog = new Blog({
-    title: 'New Blog',
+    title: 'New Blog 2',
     snippet: 'about my new blog',
     body: 'more about my new blog'
   });
@@ -35,6 +35,18 @@ app.get('/add-blog', (req, res) => {
   blog.save()
     .then((result) => res.send(result))
     .catch((err) => console.error(err));
+});
+
+app.get('/all-blogs', (req, res) => {
+  Blog.find()
+   .then((result) => res.send(result))
+   .catch((err) => console.error(err));
+});
+
+app.get('/single-blog', (req, res) => {
+  Blog.findById('67250fe6aa1ca925d9273269')
+   .then((result) => res.send(result))
+   .catch((err) => console.error(err));
 });
 
 app.get('/', (req, res) => {
