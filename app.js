@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const mongodb = require('mongoose');
 require('dotenv').config();
 
 // get environment variables
@@ -10,13 +11,13 @@ const db_password = process.env.DB_PASSWORD;
 const app = express();
 
 // connect to mongodb
-const dbURI = `mongodb+srv://${db_username}:${db_password}@nodetut.upy0n.mongodb.net/?retryWrites=true&w=majority&appName=NodeTut`;
+const dbURI = `mongodb+srv://${db_username}:${db_password}@nodetut.upy0n.mongodb.net/node-tut?retryWrites=true&w=majority&appName=NodeTut`;
+mongodb.connect(dbURI)
+ .then((result) => app.listen(3000))
+ .catch((err) => console.error(err));
 
 // register view engine
 app.set('view engine', 'ejs');
-
-// listen for requests
-app.listen(3000);
 
 // middleware & static files
 app.use(express.static('public'));
